@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Portfolio : Projects</title>
+</head>
+<body>
+    <h1>My Projects</h1>
+    {% for data in dataset %}
+    <p>{{ data.project_name }}</p>
+    <p>{{ data.project_description }}</p>
+    {% if data.project_link == "n/a" %}
+    <p>link: n/a</p>
+    {% else %}
+    <p>link: <a href="https://{{ data.project_link }}" target=”_blank”>{{ data.project_link }}</a></p>
+    {% endif %}
+    <hr/>
+    {% endfor %}
+</body>
+</html>

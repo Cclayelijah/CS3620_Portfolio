@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from .models import Hobby, Project
 
 
 def home(request):
-    return HttpResponse(""
-                        "<h1>Home</h1>"
-                        "<p>Hi!<br />My name is Elijah Cannon and I am a senior at Weber State University studying computer science :) Please check out my hobbies and also the cool projects I have been working on.</p>")
+    return render(request, "home.html")
 
 
 def contact(request):
@@ -16,10 +15,12 @@ def contact(request):
 
 
 def hobbies(request):
-    hobby_list = Hobby.objects.all()
-    return HttpResponse("<h1>My Hobbies</h1>" + str(hobby_list))
+    context = {}
+    context["dataset"] = Hobby.objects.all()
+    return render(request, "hobbies.html", context)
 
 
 def projects(request):
-    project_list = Project.objects.all()
-    return HttpResponse("<h1>My Projects</h1>" + str(project_list))
+    context = {}
+    context["dataset"] = Project.objects.all()
+    return render(request, "projects.html", context)
