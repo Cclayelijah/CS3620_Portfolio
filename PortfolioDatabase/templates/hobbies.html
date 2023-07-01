@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,12 +9,25 @@
     <title>My Portfolio : hobbies</title>
 </head>
 <body>
-    <h1>My Hobbies</h1>
-    {% for data in dataset %}
-    <p>{{ data.hobby_name }}</p>
-    <p>{{ data.hobby_description }}</p>
-    <p>Skill level: {{ data.skill_level }}</p>
-    <hr/>
-    {% endfor %}
+{% block body %}
+    <div class="container">
+        <h1 style="margin: 50px 0">My Hobbies</h1>
+        {% for data in dataset %}
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ data.hobby_image }}" alt="hobby" height="100px">
+            </div>
+            <div class="col-md-6">
+                <h4>{{ data.hobby_name }}</h4>
+                <p>Skill level: {{ data.skill_level }}</p>
+            </div>
+            <div class="col-md-2" style="display:flex;align-items:center">
+                <a href="{% url 'PortfolioDatabase:hobby' data.id %}" class="btn btn-success">Details</a>
+            </div>
+        </div>
+        <hr/>
+        {% endfor %}
+    </div>
+{% endblock %}
 </body>
 </html>

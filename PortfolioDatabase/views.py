@@ -10,8 +10,7 @@ def home(request):
 
 
 def contact(request):
-    return HttpResponse("<h1>Contact Me</h1>"
-                        "Email: elijahcannon@mail.weber.edu")
+    return render(request, "contact.html")
 
 
 def hobbies(request):
@@ -20,7 +19,19 @@ def hobbies(request):
     return render(request, "hobbies.html", context)
 
 
+def hobby(request, hobby_id):
+    context = {}
+    context["dataset"] = Hobby.objects.get(pk=hobby_id)
+    return render(request, "hobby.html", context)
+
+
 def projects(request):
     context = {}
     context["dataset"] = Project.objects.all()
     return render(request, "projects.html", context)
+
+
+def project(request, project_id):
+    context = {}
+    context["dataset"] = Project.objects.get(pk=project_id)
+    return render(request, "project.html", context)

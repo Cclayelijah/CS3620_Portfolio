@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,8 +9,13 @@
     <title>My Portfolio</title>
 </head>
 <body>
-<h1>Home</h1>
-<p>Welcome to my rocking portfolio &#128640;</p>
-<p>My name is Elijah Cannon and I am a senior at Weber State University studying computer science :) Please check out my hobbies and also the cool projects I have been working on.</p>
+{% block body %}
+<div class="container">
+    <h1 style="margin: 50px 0">Home</h1>
+    <p>Welcome to my rocking portfolio &#128640;</p>
+    <p>My name is Elijah Cannon and I am a senior at Weber State University studying computer science :) Please check out my hobbies and also the cool projects I have been working on.</p>
+
+</div>
+{% endblock %}
 </body>
 </html>

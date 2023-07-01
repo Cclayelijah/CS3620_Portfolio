@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,16 +9,25 @@
     <title>My Portfolio : Projects</title>
 </head>
 <body>
-    <h1>My Projects</h1>
-    {% for data in dataset %}
-    <p>{{ data.project_name }}</p>
-    <p>{{ data.project_description }}</p>
-    {% if data.project_link == "n/a" %}
-    <p>link: n/a</p>
-    {% else %}
-    <p>link: <a href="https://{{ data.project_link }}" target=”_blank”>{{ data.project_link }}</a></p>
-    {% endif %}
-    <hr/>
-    {% endfor %}
+{% block body %}
+    <div class="container">
+        <h1 style="margin: 50px 0">My Projects</h1>
+        {% for data in dataset %}
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ data.project_image }}" alt="project" height="100px">
+            </div>
+            <div class="col-md-6">
+                <h4>{{ data.project_name }}</h4>
+                <p>{{data.project_description}}</p>
+            </div>
+            <div class="col-md-3" style="display:flex;align-items:center; justify-content:flex-end">
+                <a href="{% url 'PortfolioDatabase:project' data.id %}" class="btn btn-success">Details</a>
+            </div>
+        </div>
+        <hr/>
+        {% endfor %}
+    </div>
+{% endblock %}
 </body>
 </html>
